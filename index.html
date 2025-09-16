@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interact.js 多轨时间轴示例（生产级）</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="toolbar__group">
+        <label>缩放(px/s)
+          <input id="zoomRange" type="range" min="40" max="400" step="1" value="120" />
+        </label>
+        <output id="zoomOut">120</output>
+      </div>
+      <div class="toolbar__group">
+        <label>吸附间隔(s)
+          <input id="snapInput" type="number" min="0.01" step="0.01" value="0.25" />
+        </label>
+        <label class="checkbox">
+          <input id="snapToggle" type="checkbox" checked /> 启用吸附
+        </label>
+      </div>
+      <div class="toolbar__group">
+        <button id="btnAddClip" type="button">新增片段</button>
+        <button id="btnDelete" type="button">删除所选</button>
+        <button id="btnFit" type="button">适配内容</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">轨道</div>
+        <div class="sidebar__tracks" id="trackLabels"></div>
+      </aside>
+
+      <section class="timeline" id="timelineSection">
+        <div class="timeline__rulerWrap">
+          <canvas id="rulerCanvas" class="timeline__ruler"></canvas>
+        </div>
+        <div class="timeline__viewport" id="tracksViewport">
+          <div class="timeline__content" id="timeline">
+            <div class="timeline__grid" id="gridLayer"></div>
+            <div class="timeline__rows" id="rowsLayer"></div>
+            <div class="timeline__clips" id="clipsLayer"></div>
+          </div>
+          <div class="timeline__playhead" id="playhead" draggable="false"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="./app.js" type="module"></script>
+  </body>
+  </html>
+
